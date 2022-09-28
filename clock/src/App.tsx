@@ -70,24 +70,30 @@ function App() {
     '59',
     'ろ～くじゅう',
   ];
+  // １秒ごとに更新
   useEffect(() => {
     const nowTime = setInterval(() => {
       setDate(new Date());
     }, 1000);
     return () => clearInterval(nowTime);
   }, [date]);
+  // 0で埋めて2桁にそろえる
+  const twoDigit = (num: number): string => {
+    let ret: string;
+    num < 10 ? (ret = '0' + num) : (ret = num.toString());
+    return ret;
+  };
 
   return (
     <div className="App">
       <p>誰かさんのネタみたいな時計</p>
       <p>
-        {strTime[h]}じ{strTime[m]}ふん{strTime[s]}びょう
+        {strTime[h]}時{strTime[m]}分{strTime[s]}秒
       </p>
       <p>
-        普通の時刻{h}:{m}:{s}
+        普通の時刻{twoDigit(h)}:{twoDigit(m)}:{twoDigit(s)}
       </p>
     </div>
   );
 }
-
 export default App;
