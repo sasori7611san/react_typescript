@@ -74,7 +74,11 @@ function App() {
         // マイナス時は'まいなす'を追加
         minus && words.push('まいなす');
         if (thousand !== 0) {
-          addWords(words, idiotWordOver, thousand, 'せん');
+          if (thousand !== 3) {
+            addWords(words, idiotWordOver, thousand, 'せん');
+          } else {
+            addWords(words, idiotWordOver, thousand, 'ぜん');
+          }
         }
         if (hundred !== 0) {
           addWords(words, idiotWordOver, hundred, 'ひゃく');
@@ -89,7 +93,7 @@ function App() {
       } else if (thousand === 3) {
         // マイナス時は'まいなす'を追加
         minus && words.push('まいなす');
-        addWords(words, idiotWordOver, thousand, 'せん');
+        addWords(words, idiotWordOver, thousand, 'ぜん');
         if (hundred !== 0) {
           addWords(words, idiotWordOver, hundred, 'ひゃく');
         }
