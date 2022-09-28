@@ -59,7 +59,7 @@ function App() {
     let one: number = calc;
     // 文字入力変数
     let words: string[] = [];
-    // マイナスフラグ
+    // マイナスフラグ カウントがマイナスならtrue
     let minus: boolean = false;
     if (num < 0) {
       minus = true;
