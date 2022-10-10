@@ -34,17 +34,23 @@ export const BaseButton: FC<Props> = memo((props) => {
   // })
   switch (props.strColor) {
     case 'red':
-      return <BaseRed />;
+      // return <BaseRed />;
+      return <BaseRed onClick={props.onClick} />;
     case 'green':
-      return <BaseGreen />;
+      // return <BaseGreen />;
+      return <BaseGreen onClick={props.onClick} />;
     case 'white':
-      return <BaseWhite />;
+      // return <BaseWhite />;
+      return <BaseWhite onClick={props.onClick} />;
     case 'blue':
-      return <BaseBlue />;
+      // return <BaseBlue />;
+      return <BaseBlue onClick={props.onClick} />;
     case 'yellow':
-      return <BaseYellow />;
+      // return <BaseYellow />;
+      return <BaseYellow onClick={props.onClick} />;
     default:
-      return <BaseGray />;
+      // return <BaseGray />;
+      return <BaseGray onClick={props.onClick} />;
   }
 });
 const BaseRed = styled.button`

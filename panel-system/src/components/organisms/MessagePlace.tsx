@@ -10,9 +10,9 @@ export const MessagePlace: FC<Props> = memo((props: Props) => {
   return (
     <div>
       <br />
-      <p>{message}</p>
-      <p>選択中の色：{strColor}</p>
-      <p>取れる番号は、{panelNo}</p>
+      <p>{`${message}`}</p>
+      <p>{`選択中の色：${strColor}`}</p>
+      <p>{`取れる番号は、${panelNo}`}</p>
     </div>
   );
 });

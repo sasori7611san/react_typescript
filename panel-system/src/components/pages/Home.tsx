@@ -1,4 +1,4 @@
-import { FC, memo } from 'react';
+import { FC, memo, useEffect, useState } from 'react';
 import { choiceColorSet } from '../../modules/choiceColorSet';
 import { COLORS } from '../../modules/enums';
 import {
@@ -23,108 +23,230 @@ import {
   rightUpSandCheck,
   upSandCheck,
 } from '../../modules/sandCheck';
-import { ColorType, Panel, Total } from '../../modules/types';
+import { ColorType, Panel, PanelChange, Total } from '../../modules/types';
 import { ChoiceColor } from '../organisms/ChoiceColor';
 import { MessagePlace } from '../organisms/MessagePlace';
 import { PanelScreen } from '../organisms/PanelScreen';
 
+// 使用色番号
+let colorNum = 0;
+// const [colorNum, setColorNum] = useState<number>(0);
+// パネルの初期化、colorNo = -1は枠、0はパネル（灰色）
+let panel: Panel[][] = [
+  [
+    { colorNo: -1, check: false, condition: 9 },
+    { colorNo: -1, check: false, condition: 9 },
+    { colorNo: -1, check: false, condition: 9 },
+    { colorNo: -1, check: false, condition: 9 },
+    { colorNo: -1, check: false, condition: 9 },
+    { colorNo: -1, check: false, condition: 9 },
+    { colorNo: -1, check: false, condition: 9 },
+  ],
+  [
+    { colorNo: -1, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: -1, check: false, condition: 9 },
+  ],
+  [
+    { colorNo: -1, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: -1, check: false, condition: 9 },
+  ],
+  [
+    { colorNo: -1, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: -1, check: false, condition: 9 },
+  ],
+  [
+    { colorNo: -1, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: -1, check: false, condition: 9 },
+  ],
+  [
+    { colorNo: -1, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: 0, check: false, condition: 9 },
+    { colorNo: -1, check: false, condition: 9 },
+  ],
+  [
+    { colorNo: -1, check: false, condition: 9 },
+    { colorNo: -1, check: false, condition: 9 },
+    { colorNo: -1, check: false, condition: 9 },
+    { colorNo: -1, check: false, condition: 9 },
+    { colorNo: -1, check: false, condition: 9 },
+    { colorNo: -1, check: false, condition: 9 },
+    { colorNo: -1, check: false, condition: 9 },
+  ],
+];
+// 使用メッセージ
+// let strColor: string = '';
+// let message: string = '必ず入力する色を選んでから番号を押してください';
+// let panelNo: string = '';
+// const [strColor, setStrColor] = useState<string>('');
+// const [message, setMessage] = useState<string>(
+//   '必ず入力する色を選んでから番号を押してください'
+// );
+// const [panelNo, setPanelNo] = useState<string>('');
+// パネル集計用変数
+let panelTotal: Total = {
+  redSheet: 0,
+  greenSheet: 0,
+  whiteSheet: 0,
+  blueSheet: 0,
+};
+// パネル集計用変数
+let colorType: ColorType = {
+  colorNum: 0,
+  colorStr: '灰',
+};
+// パネル格納
+let panelresult: PanelChange = {
+  panel: panel,
+  total: panelTotal,
+};
+
 export const Home: FC = memo(() => {
-  // 使用色番号
-  let colorNum = 0;
-  // パネルの初期化、colorNo = -1は枠、0はパネル（灰色）
-  const panel: Panel[][] = [
-    [
-      { colorNo: -1, check: false, condition: 9 },
-      { colorNo: -1, check: false, condition: 9 },
-      { colorNo: -1, check: false, condition: 9 },
-      { colorNo: -1, check: false, condition: 9 },
-      { colorNo: -1, check: false, condition: 9 },
-      { colorNo: -1, check: false, condition: 9 },
-      { colorNo: -1, check: false, condition: 9 },
-    ],
-    [
-      { colorNo: -1, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: -1, check: false, condition: 9 },
-    ],
-    [
-      { colorNo: -1, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: -1, check: false, condition: 9 },
-    ],
-    [
-      { colorNo: -1, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: -1, check: false, condition: 9 },
-    ],
-    [
-      { colorNo: -1, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: -1, check: false, condition: 9 },
-    ],
-    [
-      { colorNo: -1, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: 0, check: false, condition: 9 },
-      { colorNo: -1, check: false, condition: 9 },
-    ],
-    [
-      { colorNo: -1, check: false, condition: 9 },
-      { colorNo: -1, check: false, condition: 9 },
-      { colorNo: -1, check: false, condition: 9 },
-      { colorNo: -1, check: false, condition: 9 },
-      { colorNo: -1, check: false, condition: 9 },
-      { colorNo: -1, check: false, condition: 9 },
-      { colorNo: -1, check: false, condition: 9 },
-    ],
-  ];
-  // 使用メッセージ
-  let strColor: string = '';
-  let message: string = '必ず入力する色を選んでから番号を押してください';
-  let panelNo: string = '';
-  // パネル集計用変数
-  const panelTotal: Total = {
-    redSheet: 0,
-    greenSheet: 0,
-    whiteSheet: 0,
-    blueSheet: 0,
-  };
-  // パネル集計用変数
-  let colorType: ColorType = {
-    colorNum: 0,
-    colorStr: '灰',
-  };
+  // // 使用色番号
+  // let colorNum = 0;
+  // // const [colorNum, setColorNum] = useState<number>(0);
+  // // パネルの初期化、colorNo = -1は枠、0はパネル（灰色）
+  // let panel: Panel[][] = [
+  //   [
+  //     { colorNo: -1, check: false, condition: 9 },
+  //     { colorNo: -1, check: false, condition: 9 },
+  //     { colorNo: -1, check: false, condition: 9 },
+  //     { colorNo: -1, check: false, condition: 9 },
+  //     { colorNo: -1, check: false, condition: 9 },
+  //     { colorNo: -1, check: false, condition: 9 },
+  //     { colorNo: -1, check: false, condition: 9 },
+  //   ],
+  //   [
+  //     { colorNo: -1, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: -1, check: false, condition: 9 },
+  //   ],
+  //   [
+  //     { colorNo: -1, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: -1, check: false, condition: 9 },
+  //   ],
+  //   [
+  //     { colorNo: -1, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: -1, check: false, condition: 9 },
+  //   ],
+  //   [
+  //     { colorNo: -1, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: -1, check: false, condition: 9 },
+  //   ],
+  //   [
+  //     { colorNo: -1, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: 0, check: false, condition: 9 },
+  //     { colorNo: -1, check: false, condition: 9 },
+  //   ],
+  //   [
+  //     { colorNo: -1, check: false, condition: 9 },
+  //     { colorNo: -1, check: false, condition: 9 },
+  //     { colorNo: -1, check: false, condition: 9 },
+  //     { colorNo: -1, check: false, condition: 9 },
+  //     { colorNo: -1, check: false, condition: 9 },
+  //     { colorNo: -1, check: false, condition: 9 },
+  //     { colorNo: -1, check: false, condition: 9 },
+  //   ],
+  // ];
+  // // 使用メッセージ
+  // // let strColor: string = '';
+  // // let message: string = '必ず入力する色を選んでから番号を押してください';
+  // // let panelNo: string = '';
+  const [strColor, setStrColor] = useState<string>('');
+  const [message, setMessage] = useState<string>(
+    '必ず入力する色を選んでから番号を押してください'
+  );
+  const [panelNo, setPanelNo] = useState<string>('');
+  // // パネル集計用変数
+  // let panelTotal: Total = {
+  //   redSheet: 0,
+  //   greenSheet: 0,
+  //   whiteSheet: 0,
+  //   blueSheet: 0,
+  // };
+  // // パネル集計用変数
+  // let colorType: ColorType = {
+  //   colorNum: 0,
+  //   colorStr: '灰',
+  // };
+  // // パネル格納
+  // let panelresult: PanelChange = {
+  //   panel: panel,
+  //   total: panelTotal,
+  // };
 
   // 色の選択・表示用変数へ代入（num:色番号）
   const choiceColor = (num: number): void => {
     // 色の選択を反映
     colorType = choiceColorSet(num);
     colorNum = colorType.colorNum;
-    strColor = colorType.colorStr;
+    // strColor = colorType.colorStr;
+    // useEffect(() => {
+    //   useColorNum(colorType.colorNum);
+    // }, [colorNum]);
+    // useEffect(() => {
+    //   useStrColor(colorType.colorStr);
+    // }, [strColor]);
+    // setColorNum(colorType.colorNum);
+    setStrColor(colorType.colorStr);
     // 取れるパネルを確認
-    panelNo = panelCheck(panel, colorNum);
+    // panelNo = panelCheck(panel, colorNum);
+    // useEffect(() => {
+    //   usePanelNo(panelCheck(panel, colorNum));
+    // }, [panelNo]);
+    setPanelNo(panelCheck(panel, colorNum));
+    console.log(`colorNum:${colorNum}`);
+    console.log(panel);
   };
   // パネル取得（num:パネル番号）
   const action = (num: number): void => {
+    console.log(`colorNum:${colorNum}`);
     // 縦要素番号
     let verNo = 0;
     // 横要素番号
@@ -138,8 +260,21 @@ export const Home: FC = memo(() => {
       num % 5 === 0 ? (sideNo = 5) : (sideNo = num % 5);
       if (panel[verNo][sideNo].check) {
         // パネルに色を設定し、次取れる箇所や枚数を集計
-        panelChangeExec(colorNum, verNo, sideNo, panel, panelTotal);
-        panelNo = panelCheck(panel, colorNum);
+        panelresult = panelChangeExec(
+          colorNum,
+          verNo,
+          sideNo,
+          panel,
+          panelTotal
+        );
+        panel = panelresult.panel;
+        panelTotal = panelresult.total;
+        // panelNo = panelCheck(panel, colorNum);
+        // useEffect(() => {
+        //   usePanelNo(panelCheck(panel, colorNum));
+        // }, [panelNo]);
+        setPanelNo(panelCheck(panel, colorNum));
+        console.log(panelNo);
         // 挟まったパネルの色を変える
         // 起点の色
         const currentColorNo = panel[verNo][sideNo].colorNo;
@@ -313,18 +448,21 @@ export const Home: FC = memo(() => {
         // watch(panelTotal, () => {
         //   panelNo = panelCheck(panel, colorNum)
         // })
-        message = '';
+        // message = '';
+        setMessage('');
       } else {
         // メッセージ出力（入れないことを表示）
-        message = '今は取れません';
+        // message = '今は取れません';
+        setMessage('今は取れません');
       }
     }
+    console.log(panel);
   };
   // パネルの集計値を渡す
   // provide(totalKey, panelTotal)
   return (
     <div>
-      <PanelScreen action={(num: number) => action(num)} />
+      <PanelScreen action={(num: number) => action(num)} panelColor={panel} />
       <MessagePlace strColor={strColor} message={message} panelNo={panelNo} />
       <ChoiceColor choiceColor={(num: number) => choiceColor(num)} />
     </div>
