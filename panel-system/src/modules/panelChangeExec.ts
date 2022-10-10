@@ -86,13 +86,14 @@ let panelChange: PanelChange = {
 }
 
 // パネル更新
-// 時間差をつけて更新させるためパネル変化数を引数から取得し、各方向で対象となるパネルに対して更新処理を行う
+// 各方向で対象となるパネルに対して更新処理を行う
 // パネル更新（上方向）（col:対象色番号,v:縦番号,s:横番号,pan:パネル,total:パネル集計,sheet:パネル変化枚数）
 export const upPanelChenge = (col: number, v: number, s: number, pan: Panel[][], total: Total, sheet: number): number => {
   sheets = sheet
   for (i = v - 1; i >= 0; i--) {
     if (pan[i][s].colorNo !== col && pan[i][s].colorNo > COLORS.YELLOW) {
-      panelChangeTime(col, i, s, pan, total)
+      // panelChangeTime(col, i, s, pan, total)
+      panelChangeExec(col, i, s, pan, total)
     } else {
       break
     }
@@ -104,7 +105,8 @@ export const downPanelChenge = (col: number, v: number, s: number, pan: Panel[][
   sheets = sheet
   for (i = v + 1; i <= 6; i++) {
     if (pan[i][s].colorNo !== col && pan[i][s].colorNo > COLORS.YELLOW) {
-      panelChangeTime(col, i, s, pan, total)
+      // panelChangeTime(col, i, s, pan, total)
+      panelChangeExec(col, i, s, pan, total)
     } else {
       break
     }
@@ -116,7 +118,8 @@ export const leftPanelChenge = (col: number, v: number, s: number, pan: Panel[][
   sheets = sheet
   for (i = s - 1; i >= 0; i--) {
     if (pan[v][i].colorNo !== col && pan[v][i].colorNo > COLORS.YELLOW) {
-      panelChangeTime(col, v, i, pan, total)
+      // panelChangeTime(col, v, i, pan, total)
+      panelChangeExec(col, v, i, pan, total)
     } else {
       break
     }
@@ -128,7 +131,8 @@ export const rightPanelChenge = (col: number, v: number, s: number, pan: Panel[]
   sheets = sheet
   for (i = s + 1; i <= 6; i++) {
     if (pan[v][i].colorNo !== col && pan[v][i].colorNo > COLORS.YELLOW) {
-      panelChangeTime(col, v, i, pan, total)
+      // panelChangeTime(col, v, i, pan, total)
+      panelChangeExec(col, v, i, pan, total)
     } else {
       break
     }
@@ -140,7 +144,8 @@ export const leftUpPanelChenge = (col: number, v: number, s: number, pan: Panel[
   sheets = sheet
   for (i = v - 1, j = s - 1; i >= 0 || j >= 0; i--, j--) {
     if (pan[i][j].colorNo !== col && pan[i][j].colorNo > COLORS.YELLOW) {
-      panelChangeTime(col, i, j, pan, total)
+      // panelChangeTime(col, i, j, pan, total)
+      panelChangeExec(col, i, j, pan, total)
     } else {
       break
     }
@@ -152,7 +157,8 @@ export const leftDownPanelChenge = (col: number, v: number, s: number, pan: Pane
   sheets = sheet
   for (i = v + 1, j = s - 1; i <= 6 || j >= 0; i++, j--) {
     if (pan[i][j].colorNo !== col && pan[i][j].colorNo > COLORS.YELLOW) {
-      panelChangeTime(col, i, j, pan, total)
+      // panelChangeTime(col, i, j, pan, total)
+      panelChangeExec(col, i, j, pan, total)
     } else {
       break
     }
@@ -164,7 +170,8 @@ export const rightUpPanelChenge = (col: number, v: number, s: number, pan: Panel
   sheets = sheet
   for (i = v - 1, j = s + 1; i >= 0 || j <= 6; i--, j++) {
     if (pan[i][j].colorNo !== col && pan[i][j].colorNo > COLORS.YELLOW) {
-      panelChangeTime(col, i, j, pan, total)
+      // panelChangeTime(col, i, j, pan, total)
+      panelChangeExec(col, i, j, pan, total)
     } else {
       break
     }
@@ -176,7 +183,8 @@ export const rightDownPanelChenge = (col: number, v: number, s: number, pan: Pan
   sheets = sheet
   for (i = v + 1, j = s + 1; i <= 6 || j <= 6; i++, j++) {
     if (pan[i][j].colorNo !== col && pan[i][j].colorNo > COLORS.YELLOW) {
-      panelChangeTime(col, i, j, pan, total)
+      // panelChangeTime(col, i, j, pan, total)
+      panelChangeExec(col, i, j, pan, total)
     } else {
       break
     }

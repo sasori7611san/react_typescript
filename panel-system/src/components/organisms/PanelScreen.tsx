@@ -18,147 +18,75 @@ export const PanelScreen: FC<Props> = memo((props) => {
     action(1);
   };
   const action2 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(2);
-    // }
     action(2);
   };
   const action3 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(3);
-    // }
     action(3);
   };
   const action4 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(4);
-    // }
     action(4);
   };
   const action5 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(5);
-    // }
     action(5);
   };
   const action6 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(6);
-    // }
     action(6);
   };
   const action7 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(7);
-    // }
     action(7);
   };
   const action8 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(8);
-    // }
     action(8);
   };
   const action9 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(9);
-    // }
     action(9);
   };
   const action10 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(10);
-    // }
     action(10);
   };
   const action11 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(11);
-    // }
     action(11);
   };
   const action12 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(12);
-    // }
     action(12);
   };
   const action13 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(13);
-    // }
     action(13);
   };
   const action14 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(14);
-    // }
     action(14);
   };
   const action15 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(15);
-    // }
     action(15);
   };
   const action16 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(16);
-    // }
     action(16);
   };
   const action17 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(17);
-    // }
     action(17);
   };
   const action18 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(18);
-    // }
     action(18);
   };
   const action19 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(19);
-    // }
     action(19);
   };
   const action20 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(20);
-    // }
     action(20);
   };
   const action21 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(21);
-    // }
     action(21);
   };
   const action22 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(22);
-    // }
     action(22);
   };
   const action23 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(23);
-    // }
     action(23);
   };
   const action24 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(24);
-    // }
     action(24);
   };
   const action25 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(25);
-    // }
     action(25);
   };
   return (
@@ -348,6 +276,7 @@ export const PanelScreen: FC<Props> = memo((props) => {
 const Panels = styled.div`
   display: grid;
   grid-template-columns: 60px 60px 60px 60px 60px;
+  // grid-template-columns: 160px 160px 160px 160px 160px;
   gap: 0px;
   justify-content: center;
   // background-color: gray;

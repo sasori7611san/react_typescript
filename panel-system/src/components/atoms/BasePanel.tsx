@@ -22,27 +22,7 @@ export const BasePanel: FC<Props> = memo((props) => {
     ? (verNum = Math.floor(panelNum / 5) + 1)
     : (verNum = Math.floor(panelNum / 5));
   panelNum % 5 === 0 ? (sideNum = 5) : (sideNum = panelNum % 5);
-
-  // switch (panelColor[verNum][sideNum].colorNo) {
-  //   case COLORS.YELLOW:
-  //     bgColor = 'yellow';
-  //     break;
-  //   case COLORS.RED:
-  //     bgColor = 'red';
-  //     break;
-  //   case COLORS.GREEN:
-  //     bgColor = 'green';
-  //     break;
-  //   case COLORS.WHITE:
-  //     bgColor = 'white';
-  //     break;
-  //   case COLORS.BLUE:
-  //     bgColor = 'blue';
-  //     break;
-  //   default:
-  //     bgColor = 'gray';
-  //     break;
-  // }
+  // 押した色を反映
   switch (panelColor[verNum][sideNum].colorNo) {
     case COLORS.YELLOW:
       return (
@@ -105,31 +85,13 @@ export const BasePanel: FC<Props> = memo((props) => {
         </Panels>
       );
   }
-  // return (
-  // <>
-  //   <div>
-  //     <Button
-  //       onClick={() => {
-  //         action();
-  //       }}
-  //     >
-  //       {panelNum}
-  //     </Button>
-  //   </div>
-  // </>
-  // <Panels
-  //   onClick={() => {
-  //     action();
-  //   }}
-  // >
-  //   {panelNum}
-  // </Panels>
-  // );
 });
 
 const Panels = styled.button`
   width: 60px;
   height: 60px;
+  // width: 160px;
+  // height: 90px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
   background-color: gray;
@@ -138,6 +100,8 @@ const Panels = styled.button`
 const YellowPanels = styled.button`
   width: 60px;
   height: 60px;
+  // width: 160px;
+  // height: 90px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
   background-color: Yellow;
@@ -145,6 +109,8 @@ const YellowPanels = styled.button`
 const RedPanels = styled.button`
   width: 60px;
   height: 60px;
+  // width: 160px;
+  // height: 90px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
   background-color: red;
@@ -152,6 +118,8 @@ const RedPanels = styled.button`
 const GreenPanels = styled.button`
   width: 60px;
   height: 60px;
+  // width: 160px;
+  // height: 90px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
   background-color: green;
@@ -159,6 +127,8 @@ const GreenPanels = styled.button`
 const WhitePanels = styled.button`
   width: 60px;
   height: 60px;
+  // width: 160px;
+  // height: 90px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
   background-color: white;
@@ -166,6 +136,8 @@ const WhitePanels = styled.button`
 const BluePanels = styled.button`
   width: 60px;
   height: 60px;
+  // width: 160px;
+  // height: 90px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
   background-color: blue;
