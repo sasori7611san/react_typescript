@@ -2,7 +2,8 @@ import { COLORS } from './enums'
 import { Panel, Total } from './types'
 
 // パネルの集計（panel:対象パネル,total:各色の集計）
-export const panelAggregation = (panel: Panel[][], total: Total): void => {
+// export const panelAggregation = (panel: Panel[][], total: Total): void => {
+  export const panelAggregation = (panel: Panel[][], total: Total): Total => {
   // 各色の枚数を集計の為、初期化
   total.redSheet = 0
   total.greenSheet = 0
@@ -32,4 +33,5 @@ export const panelAggregation = (panel: Panel[][], total: Total): void => {
       }
     }
   }
+  return total
 }

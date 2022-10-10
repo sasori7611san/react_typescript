@@ -16,3 +16,8 @@ export type ColorType = {
   colorNum: number;
   colorStr: string;
 }
+// パネル結果型定義
+export type PanelChange = {
+  panel: Panel[][];
+  total: Total;
+}

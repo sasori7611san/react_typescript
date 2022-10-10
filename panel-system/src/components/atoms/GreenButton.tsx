@@ -1,17 +1,20 @@
 import { FC, memo } from 'react';
+import { COLORS } from '../../modules/enums';
 import { BaseButton } from './BaseButton';
 
 type Props = {
-  choiceColor: (num: number) => void;
+  // choiceColor: (num: number) => void;
+  onClick: () => void;
 };
-
 export const GreenButton: FC<Props> = memo((props) => {
-  const greenSet = () => {
-    props.choiceColor(3);
-  };
+  // export const GreenButton: FC = memo(() => {
+  // const greenSet = () => {
+  //   props.choiceColor(COLORS.GREEN);
+  // };
   return (
     <div>
-      <BaseButton strColor={'green'} onClick={() => greenSet} />
+      <BaseButton strColor={'green'} onClick={props.onClick} />
+      {/* <BaseButton strColor={'green'} /> */}
     </div>
   );
 });
