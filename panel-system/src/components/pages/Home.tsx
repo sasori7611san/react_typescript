@@ -1,4 +1,4 @@
-import { FC, memo, useEffect, useState } from 'react';
+import { createContext, FC, memo, useState } from 'react';
 import { choiceColorSet } from '../../modules/choiceColorSet';
 import { COLORS } from '../../modules/enums';
 import {
@@ -114,6 +114,9 @@ let panelresult: PanelChange = {
   total: panelTotal,
 };
 
+// useContext宣言
+export const SheetsContext = createContext({} as Total);
+
 export const Home: FC = memo(() => {
   // 使用メッセージ
   const [strColor, setStrColor] = useState<string>('');
@@ -130,12 +133,10 @@ export const Home: FC = memo(() => {
     setStrColor(colorType.colorStr);
     // 取れるパネルを確認
     setPanelNo(panelCheck(panel, colorNum));
-    console.log(`colorNum:${colorNum}`);
-    console.log(panel);
   };
   // パネル取得（num:パネル番号）
   const action = (num: number): void => {
-    console.log(`colorNum:${colorNum}`);
+    // console.log(`colorNum:${colorNum}`);
     // 縦要素番号
     let verNo = 0;
     // 横要素番号
@@ -159,7 +160,6 @@ export const Home: FC = memo(() => {
         panel = panelresult.panel;
         panelTotal = panelresult.total;
         setPanelNo(panelCheck(panel, colorNum));
-        console.log(panelNo);
         // 挟まったパネルの色を変える
         // 起点の色
         const currentColorNo = panel[verNo][sideNo].colorNo;
@@ -339,15 +339,15 @@ export const Home: FC = memo(() => {
         setMessage('今は取れません');
       }
     }
-    console.log(panel);
   };
-  // パネルの集計値を渡す
-  // provide(totalKey, panelTotal)
+
   return (
     <div>
       <PanelScreen action={(num: number) => action(num)} panelColor={panel} />
       <MessagePlace strColor={strColor} message={message} panelNo={panelNo} />
-      <ChoiceColor choiceColor={(num: number) => choiceColor(num)} />
+      <SheetsContext.Provider value={panelTotal}>
+        <ChoiceColor choiceColor={(num: number) => choiceColor(num)} />
+      </SheetsContext.Provider>
     </div>
   );
 });

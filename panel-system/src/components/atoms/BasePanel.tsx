@@ -1,4 +1,4 @@
-import { FC, memo, useEffect } from 'react';
+import { FC, memo } from 'react';
 import styled from 'styled-components';
 import { COLORS } from '../../modules/enums';
 import { Panel } from '../../modules/types';
