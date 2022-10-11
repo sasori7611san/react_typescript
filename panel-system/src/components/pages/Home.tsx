@@ -338,6 +338,21 @@ export const Home: FC = memo(() => {
         // メッセージ出力（入れないことを表示）
         setMessage('今は取れません');
       }
+      // console.log(
+      //   `${panel[1][1].colorNo}${panel[1][2].colorNo}${panel[1][3].colorNo}${panel[1][4].colorNo}${panel[1][5].colorNo}`
+      // );
+      // console.log(
+      //   `${panel[2][1].colorNo}${panel[2][2].colorNo}${panel[2][3].colorNo}${panel[2][4].colorNo}${panel[2][5].colorNo}`
+      // );
+      // console.log(
+      //   `${panel[3][1].colorNo}${panel[3][2].colorNo}${panel[3][3].colorNo}${panel[3][4].colorNo}${panel[3][5].colorNo}`
+      // );
+      // console.log(
+      //   `${panel[4][1].colorNo}${panel[4][2].colorNo}${panel[4][3].colorNo}${panel[4][4].colorNo}${panel[4][5].colorNo}`
+      // );
+      // console.log(
+      //   `${panel[5][1].colorNo}${panel[5][2].colorNo}${panel[5][3].colorNo}${panel[5][4].colorNo}${panel[5][5].colorNo}`
+      // );
     }
   };
 

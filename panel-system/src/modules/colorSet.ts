@@ -4,7 +4,6 @@ import { Panel } from './types'
 // パネル色の設定（col:色番号,v:縦番号,s:横番号,panel:使用パネル）
 export const colorSet = (col: number, v: number, s: number, panel: Panel[][]): Panel[][] => {
   // パネルに色を反映
-  console.log('colorSetの確認')
   switch (col) {
     case 1:
       panel[v][s].colorNo = COLORS.YELLOW

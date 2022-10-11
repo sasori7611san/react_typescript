@@ -27,24 +27,28 @@ const BaseRed = styled.button`
   margin: 5px;
   width: 50px;
   height: 50px;
+  font-size: 16px;
   background: red;
 `;
 const BaseGreen = styled.button`
   margin: 5px;
   width: 50px;
   height: 50px;
+  font-size: 16px;
   background: green;
 `;
 const BaseWhite = styled.button`
   margin: 5px;
   width: 50px;
   height: 50px;
+  font-size: 16px;
   background: white;
 `;
 const BaseBlue = styled.button`
   margin: 5px;
   width: 50px;
   height: 50px;
+  font-size: 16px;
   background: blue;
 `;
 const BaseYellow = styled.button`
