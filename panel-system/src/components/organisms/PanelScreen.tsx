@@ -1,20 +1,15 @@
 import { FC, memo } from 'react';
 import styled from 'styled-components';
-import { Panel } from '../../modules/types';
 import { BasePanel } from '../atoms/BasePanel';
 
 type Props = {
   action: (num: number) => void;
-  panelColor: Panel[][];
 };
 
 export const PanelScreen: FC<Props> = memo((props) => {
-  const { panelColor, action } = props;
+  const { action } = props;
   // 各パネルの処理
   const action1 = (): void => {
-    // if (props.action !== undefined) {
-    //   props.action(1);
-    // }
     action(1);
   };
   const action2 = (): void => {
@@ -98,175 +93,150 @@ export const PanelScreen: FC<Props> = memo((props) => {
           action={() => {
             action1();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={2}
           action={() => {
             action2();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={3}
           action={() => {
             action3();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={4}
           action={() => {
             action4();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={5}
           action={() => {
             action5();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={6}
           action={() => {
             action6();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={7}
           action={() => {
             action7();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={8}
           action={() => {
             action8();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={9}
           action={() => {
             action9();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={10}
           action={() => {
             action10();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={11}
           action={() => {
             action11();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={12}
           action={() => {
             action12();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={13}
           action={() => {
             action13();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={14}
           action={() => {
             action14();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={15}
           action={() => {
             action15();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={16}
           action={() => {
             action16();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={17}
           action={() => {
             action17();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={18}
           action={() => {
             action18();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={19}
           action={() => {
             action19();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={20}
           action={() => {
             action20();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={21}
           action={() => {
             action21();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={22}
           action={() => {
             action22();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={23}
           action={() => {
             action23();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={24}
           action={() => {
             action24();
           }}
-          panelColor={panelColor}
         />
         <BasePanel
           panelNum={25}
           action={() => {
             action25();
           }}
-          panelColor={panelColor}
         />
       </Panels>
     </div>

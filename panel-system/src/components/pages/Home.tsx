@@ -1,4 +1,4 @@
-import { createContext, FC, memo, useState } from 'react';
+import { createContext, FC, memo, useContext, useState } from 'react';
 import { choiceColorSet } from '../../modules/choiceColorSet';
 import { COLORS } from '../../modules/enums';
 import {
@@ -23,79 +23,14 @@ import {
   rightUpSandCheck,
   upSandCheck,
 } from '../../modules/sandCheck';
-import { ColorType, Panel, PanelChange, Total } from '../../modules/types';
+import { ColorType, PanelChange, Total } from '../../modules/types';
+import { PanelContext } from '../../provider/PanelProvider';
 import { ChoiceColor } from '../organisms/ChoiceColor';
 import { MessagePlace } from '../organisms/MessagePlace';
 import { PanelScreen } from '../organisms/PanelScreen';
 
 // 使用色番号
 let colorNum = 0;
-// パネルの初期化、colorNo = -1は枠、0はパネル（灰色）
-let panel: Panel[][] = [
-  [
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-  ],
-  [
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-  ],
-  [
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-  ],
-  [
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-  ],
-  [
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-  ],
-  [
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-  ],
-  [
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-  ],
-];
 // パネル集計用変数
 let panelTotal: Total = {
   redSheet: 0,
@@ -108,16 +43,18 @@ let colorType: ColorType = {
   colorNum: 0,
   colorStr: '灰',
 };
-// パネル格納
-let panelresult: PanelChange = {
-  panel: panel,
-  total: panelTotal,
-};
 
-// useContext宣言
+// context宣言
 export const SheetsContext = createContext({} as Total);
 
 export const Home: FC = memo(() => {
+  // panel使用
+  let panel = useContext(PanelContext);
+  // パネル格納
+  let panelresult: PanelChange = {
+    panel: panel,
+    total: panelTotal,
+  };
   // 使用メッセージ
   const [strColor, setStrColor] = useState<string>('');
   const [message, setMessage] = useState<string>(
@@ -358,7 +295,7 @@ export const Home: FC = memo(() => {
 
   return (
     <div>
-      <PanelScreen action={(num: number) => action(num)} panelColor={panel} />
+      <PanelScreen action={(num: number) => action(num)} />
       <MessagePlace strColor={strColor} message={message} panelNo={panelNo} />
       <SheetsContext.Provider value={panelTotal}>
         <ChoiceColor choiceColor={(num: number) => choiceColor(num)} />

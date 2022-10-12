@@ -1,18 +1,19 @@
-import { FC, memo } from 'react';
+import { FC, memo, useContext } from 'react';
 import styled from 'styled-components';
 import { COLORS } from '../../modules/enums';
-import { Panel } from '../../modules/types';
+import { PanelContext } from '../../provider/PanelProvider';
 
 type Props = {
   panelNum: number;
   action: () => void;
-  panelColor: Panel[][];
 };
 // css用文字列
 let bgColor = 'gray';
 
 export const BasePanel: FC<Props> = memo((props) => {
-  const { panelNum, action, panelColor } = props;
+  // context呼び出し
+  const panel = useContext(PanelContext);
+  const { panelNum, action } = props;
   // 縦要素番号
   let verNum = 0;
   // 横要素番号
@@ -23,7 +24,7 @@ export const BasePanel: FC<Props> = memo((props) => {
     : (verNum = Math.floor(panelNum / 5));
   panelNum % 5 === 0 ? (sideNum = 5) : (sideNum = panelNum % 5);
   // 押した色を反映
-  switch (panelColor[verNum][sideNum].colorNo) {
+  switch (panel[verNum][sideNum].colorNo) {
     case COLORS.YELLOW:
       return (
         <YellowPanels
