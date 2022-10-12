@@ -1,4 +1,4 @@
-import { FC, memo, useEffect, useState } from 'react';
+import { createContext, FC, memo, useContext, useState } from 'react';
 import { choiceColorSet } from '../../modules/choiceColorSet';
 import { COLORS } from '../../modules/enums';
 import {
@@ -23,79 +23,14 @@ import {
   rightUpSandCheck,
   upSandCheck,
 } from '../../modules/sandCheck';
-import { ColorType, Panel, PanelChange, Total } from '../../modules/types';
+import { ColorType, PanelChange, Total } from '../../modules/types';
+import { PanelContext } from '../../provider/PanelProvider';
 import { ChoiceColor } from '../organisms/ChoiceColor';
 import { MessagePlace } from '../organisms/MessagePlace';
 import { PanelScreen } from '../organisms/PanelScreen';
 
 // 使用色番号
 let colorNum = 0;
-// パネルの初期化、colorNo = -1は枠、0はパネル（灰色）
-let panel: Panel[][] = [
-  [
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-  ],
-  [
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-  ],
-  [
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-  ],
-  [
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-  ],
-  [
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-  ],
-  [
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: 0, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-  ],
-  [
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-    { colorNo: -1, check: false, condition: 9 },
-  ],
-];
 // パネル集計用変数
 let panelTotal: Total = {
   redSheet: 0,
@@ -108,13 +43,18 @@ let colorType: ColorType = {
   colorNum: 0,
   colorStr: '灰',
 };
-// パネル格納
-let panelresult: PanelChange = {
-  panel: panel,
-  total: panelTotal,
-};
+
+// context宣言
+export const SheetsContext = createContext({} as Total);
 
 export const Home: FC = memo(() => {
+  // panel使用
+  let panel = useContext(PanelContext);
+  // パネル格納
+  let panelresult: PanelChange = {
+    panel: panel,
+    total: panelTotal,
+  };
   // 使用メッセージ
   const [strColor, setStrColor] = useState<string>('');
   const [message, setMessage] = useState<string>(
@@ -130,12 +70,10 @@ export const Home: FC = memo(() => {
     setStrColor(colorType.colorStr);
     // 取れるパネルを確認
     setPanelNo(panelCheck(panel, colorNum));
-    console.log(`colorNum:${colorNum}`);
-    console.log(panel);
   };
   // パネル取得（num:パネル番号）
   const action = (num: number): void => {
-    console.log(`colorNum:${colorNum}`);
+    // console.log(`colorNum:${colorNum}`);
     // 縦要素番号
     let verNo = 0;
     // 横要素番号
@@ -159,7 +97,6 @@ export const Home: FC = memo(() => {
         panel = panelresult.panel;
         panelTotal = panelresult.total;
         setPanelNo(panelCheck(panel, colorNum));
-        console.log(panelNo);
         // 挟まったパネルの色を変える
         // 起点の色
         const currentColorNo = panel[verNo][sideNo].colorNo;
@@ -338,16 +275,31 @@ export const Home: FC = memo(() => {
         // メッセージ出力（入れないことを表示）
         setMessage('今は取れません');
       }
+      // console.log(
+      //   `${panel[1][1].colorNo}${panel[1][2].colorNo}${panel[1][3].colorNo}${panel[1][4].colorNo}${panel[1][5].colorNo}`
+      // );
+      // console.log(
+      //   `${panel[2][1].colorNo}${panel[2][2].colorNo}${panel[2][3].colorNo}${panel[2][4].colorNo}${panel[2][5].colorNo}`
+      // );
+      // console.log(
+      //   `${panel[3][1].colorNo}${panel[3][2].colorNo}${panel[3][3].colorNo}${panel[3][4].colorNo}${panel[3][5].colorNo}`
+      // );
+      // console.log(
+      //   `${panel[4][1].colorNo}${panel[4][2].colorNo}${panel[4][3].colorNo}${panel[4][4].colorNo}${panel[4][5].colorNo}`
+      // );
+      // console.log(
+      //   `${panel[5][1].colorNo}${panel[5][2].colorNo}${panel[5][3].colorNo}${panel[5][4].colorNo}${panel[5][5].colorNo}`
+      // );
     }
-    console.log(panel);
   };
-  // パネルの集計値を渡す
-  // provide(totalKey, panelTotal)
+
   return (
     <div>
-      <PanelScreen action={(num: number) => action(num)} panelColor={panel} />
+      <PanelScreen action={(num: number) => action(num)} />
       <MessagePlace strColor={strColor} message={message} panelNo={panelNo} />
-      <ChoiceColor choiceColor={(num: number) => choiceColor(num)} />
+      <SheetsContext.Provider value={panelTotal}>
+        <ChoiceColor choiceColor={(num: number) => choiceColor(num)} />
+      </SheetsContext.Provider>
     </div>
   );
 });

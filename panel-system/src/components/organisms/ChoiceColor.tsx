@@ -32,18 +32,13 @@ export const ChoiceColor: FC<Props> = memo((props) => {
     <>
       <div>
         <Play>
-          {/* <RedButton choiceColor={props.choiceColor} />
-          <GreenButton choiceColor={props.choiceColor} />
-          <WhiteButton choiceColor={props.choiceColor} />
-          <BlueButton choiceColor={props.choiceColor} /> */}
           <RedButton onClick={redSet} />
           <GreenButton onClick={greenSet} />
           <WhiteButton onClick={whiteSet} />
           <BlueButton onClick={blueSet} />
         </Play>
         <Play>
-          {/* <YellowButton choiceColor={props.choiceColor}></YellowButton> */}
-          <YellowButton onClick={yellowSet}></YellowButton>
+          <YellowButton onClick={yellowSet} />
         </Play>
         <p>更新で最初からに戻ります。</p>
       </div>
