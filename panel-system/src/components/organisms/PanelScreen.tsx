@@ -8,82 +8,6 @@ type Props = {
 
 export const PanelScreen: FC<Props> = memo((props) => {
   const { action } = props;
-  // 各パネルの処理
-  const action1 = (): void => {
-    action(1);
-  };
-  const action2 = (): void => {
-    action(2);
-  };
-  const action3 = (): void => {
-    action(3);
-  };
-  const action4 = (): void => {
-    action(4);
-  };
-  const action5 = (): void => {
-    action(5);
-  };
-  const action6 = (): void => {
-    action(6);
-  };
-  const action7 = (): void => {
-    action(7);
-  };
-  const action8 = (): void => {
-    action(8);
-  };
-  const action9 = (): void => {
-    action(9);
-  };
-  const action10 = (): void => {
-    action(10);
-  };
-  const action11 = (): void => {
-    action(11);
-  };
-  const action12 = (): void => {
-    action(12);
-  };
-  const action13 = (): void => {
-    action(13);
-  };
-  const action14 = (): void => {
-    action(14);
-  };
-  const action15 = (): void => {
-    action(15);
-  };
-  const action16 = (): void => {
-    action(16);
-  };
-  const action17 = (): void => {
-    action(17);
-  };
-  const action18 = (): void => {
-    action(18);
-  };
-  const action19 = (): void => {
-    action(19);
-  };
-  const action20 = (): void => {
-    action(20);
-  };
-  const action21 = (): void => {
-    action(21);
-  };
-  const action22 = (): void => {
-    action(22);
-  };
-  const action23 = (): void => {
-    action(23);
-  };
-  const action24 = (): void => {
-    action(24);
-  };
-  const action25 = (): void => {
-    action(25);
-  };
   return (
     <div>
       <p>I have seen it...</p>
@@ -91,151 +15,151 @@ export const PanelScreen: FC<Props> = memo((props) => {
         <BasePanel
           panelNum={1}
           action={() => {
-            action1();
+            action(1);
           }}
         />
         <BasePanel
           panelNum={2}
           action={() => {
-            action2();
+            action(2);
           }}
         />
         <BasePanel
           panelNum={3}
           action={() => {
-            action3();
+            action(3);
           }}
         />
         <BasePanel
           panelNum={4}
           action={() => {
-            action4();
+            action(4);
           }}
         />
         <BasePanel
           panelNum={5}
           action={() => {
-            action5();
+            action(5);
           }}
         />
         <BasePanel
           panelNum={6}
           action={() => {
-            action6();
+            action(6);
           }}
         />
         <BasePanel
           panelNum={7}
           action={() => {
-            action7();
+            action(7);
           }}
         />
         <BasePanel
           panelNum={8}
           action={() => {
-            action8();
+            action(8);
           }}
         />
         <BasePanel
           panelNum={9}
           action={() => {
-            action9();
+            action(9);
           }}
         />
         <BasePanel
           panelNum={10}
           action={() => {
-            action10();
+            action(10);
           }}
         />
         <BasePanel
           panelNum={11}
           action={() => {
-            action11();
+            action(11);
           }}
         />
         <BasePanel
           panelNum={12}
           action={() => {
-            action12();
+            action(12);
           }}
         />
         <BasePanel
           panelNum={13}
           action={() => {
-            action13();
+            action(13);
           }}
         />
         <BasePanel
           panelNum={14}
           action={() => {
-            action14();
+            action(14);
           }}
         />
         <BasePanel
           panelNum={15}
           action={() => {
-            action15();
+            action(15);
           }}
         />
         <BasePanel
           panelNum={16}
           action={() => {
-            action16();
+            action(16);
           }}
         />
         <BasePanel
           panelNum={17}
           action={() => {
-            action17();
+            action(17);
           }}
         />
         <BasePanel
           panelNum={18}
           action={() => {
-            action18();
+            action(18);
           }}
         />
         <BasePanel
           panelNum={19}
           action={() => {
-            action19();
+            action(19);
           }}
         />
         <BasePanel
           panelNum={20}
           action={() => {
-            action20();
+            action(20);
           }}
         />
         <BasePanel
           panelNum={21}
           action={() => {
-            action21();
+            action(21);
           }}
         />
         <BasePanel
           panelNum={22}
           action={() => {
-            action22();
+            action(22);
           }}
         />
         <BasePanel
           panelNum={23}
           action={() => {
-            action23();
+            action(23);
           }}
         />
         <BasePanel
           panelNum={24}
           action={() => {
-            action24();
+            action(24);
           }}
         />
         <BasePanel
           panelNum={25}
           action={() => {
-            action25();
+            action(25);
           }}
         />
       </Panels>

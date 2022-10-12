@@ -2,26 +2,26 @@ import { createContext, FC, memo, useContext, useState } from 'react';
 import { choiceColorSet } from '../../modules/choiceColorSet';
 import { COLORS } from '../../modules/enums';
 import {
-  downPanelChenge,
-  leftDownPanelChenge,
-  leftPanelChenge,
-  leftUpPanelChenge,
-  panelChangeExec,
-  rightDownPanelChenge,
-  rightPanelChenge,
-  rightUpPanelChenge,
   upPanelChenge,
+  downPanelChenge,
+  leftPanelChenge,
+  rightPanelChenge,
+  leftUpPanelChenge,
+  leftDownPanelChenge,
+  rightUpPanelChenge,
+  rightDownPanelChenge,
+  panelChangeExec,
 } from '../../modules/panelChangeExec';
 import { panelCheck } from '../../modules/panelCheck';
 import {
-  downSandCheck,
-  leftDownSandCheck,
-  leftSandCheck,
-  leftUpSandCheck,
-  rightDownSandCheck,
-  rightSandCheck,
-  rightUpSandCheck,
   upSandCheck,
+  downSandCheck,
+  leftSandCheck,
+  rightSandCheck,
+  leftUpSandCheck,
+  leftDownSandCheck,
+  rightUpSandCheck,
+  rightDownSandCheck,
 } from '../../modules/sandCheck';
 import { ColorType, PanelChange, Total } from '../../modules/types';
 import { PanelContext } from '../../provider/PanelProvider';
@@ -104,8 +104,8 @@ export const Home: FC = memo(() => {
         let panelChange = false;
         // 色判定（0:灰色、1:黄色は除外）
         if (currentColorNo >= COLORS.RED) {
-          // パネル変化に要する秒数（ミリ秒単位）
-          const time = 800;
+          // // パネル変化に要する秒数（ミリ秒単位）
+          // const time = 800;
           // 挟まる枚数
           let sheet = 0;
           // パネル更新（各方向で確認）
@@ -119,6 +119,7 @@ export const Home: FC = memo(() => {
             verNo,
             sideNo
           );
+          // console.log('上確認');
           if (panelChange) {
             sheet = upPanelChenge(
               currentColorNo,
@@ -128,6 +129,7 @@ export const Home: FC = memo(() => {
               panelTotal,
               sheet
             );
+            // console.log('上変化');
             panelChange = false;
           }
           // 下方向確認
@@ -138,6 +140,7 @@ export const Home: FC = memo(() => {
             verNo,
             sideNo
           );
+          // console.log('下確認');
           if (panelChange) {
             sheet = downPanelChenge(
               currentColorNo,
@@ -147,6 +150,7 @@ export const Home: FC = memo(() => {
               panelTotal,
               sheet
             );
+            // console.log('下変化');
             panelChange = false;
           }
           // 左方向確認
@@ -157,6 +161,7 @@ export const Home: FC = memo(() => {
             verNo,
             sideNo
           );
+          // console.log('左確認');
           if (panelChange) {
             sheet = leftPanelChenge(
               currentColorNo,
@@ -166,6 +171,7 @@ export const Home: FC = memo(() => {
               panelTotal,
               sheet
             );
+            // console.log('左変化');
             panelChange = false;
           }
           // 右方向確認
@@ -176,6 +182,7 @@ export const Home: FC = memo(() => {
             verNo,
             sideNo
           );
+          // console.log('右確認');
           if (panelChange) {
             sheet = rightPanelChenge(
               currentColorNo,
@@ -185,6 +192,7 @@ export const Home: FC = memo(() => {
               panelTotal,
               sheet
             );
+            // console.log('右変化');
             panelChange = false;
           }
           // 左斜め上方向確認
@@ -195,6 +203,7 @@ export const Home: FC = memo(() => {
             verNo,
             sideNo
           );
+          // console.log('左上確認');
           if (panelChange) {
             sheet = leftUpPanelChenge(
               currentColorNo,
@@ -204,6 +213,7 @@ export const Home: FC = memo(() => {
               panelTotal,
               sheet
             );
+            // console.log('左上変化');
             panelChange = false;
           }
           // 左斜め下方向確認
@@ -214,6 +224,7 @@ export const Home: FC = memo(() => {
             verNo,
             sideNo
           );
+          // console.log('左下確認');
           if (panelChange) {
             sheet = leftDownPanelChenge(
               currentColorNo,
@@ -223,6 +234,7 @@ export const Home: FC = memo(() => {
               panelTotal,
               sheet
             );
+            // console.log('左下変化');
             panelChange = false;
           }
           // 右斜め上方向確認
@@ -233,6 +245,7 @@ export const Home: FC = memo(() => {
             verNo,
             sideNo
           );
+          // console.log('右上確認');
           if (panelChange) {
             sheet = rightUpPanelChenge(
               currentColorNo,
@@ -242,6 +255,7 @@ export const Home: FC = memo(() => {
               panelTotal,
               sheet
             );
+            // console.log('右上変化');
             panelChange = false;
           }
           // 右斜め下方向確認
@@ -252,8 +266,9 @@ export const Home: FC = memo(() => {
             verNo,
             sideNo
           );
+          // console.log('右下確認');
           if (panelChange) {
-            sheet = rightDownPanelChenge(
+            rightDownPanelChenge(
               currentColorNo,
               verNo,
               sideNo,
@@ -261,10 +276,27 @@ export const Home: FC = memo(() => {
               panelTotal,
               sheet
             );
+            // console.log('右下変化');
             panelChange = false;
           }
+          // console.log(`色番号${colorNum},起点色番号${currentColorNo}`);
+          // console.log(
+          //   `前${panel[1][1].condition}${panel[1][2].condition}${panel[1][3].condition}${panel[1][4].condition}${panel[1][5].condition}`
+          // );
+          // console.log(
+          //   `　${panel[2][1].condition}${panel[2][2].condition}${panel[2][3].condition}${panel[2][4].condition}${panel[2][5].condition}`
+          // );
+          // console.log(
+          //   `　${panel[3][1].condition}${panel[3][2].condition}${panel[3][3].condition}${panel[3][4].condition}${panel[3][5].condition}`
+          // );
+          // console.log(
+          //   `　${panel[4][1].condition}${panel[4][2].condition}${panel[4][3].condition}${panel[4][4].condition}${panel[4][5].condition}`
+          // );
+          // console.log(
+          //   `　${panel[5][1].condition}${panel[5][2].condition}${panel[5][3].condition}${panel[5][4].condition}${panel[5][5].condition}`
+          // );
           // 取れるパネルを再チェック
-          window.setTimeout(panelCheck, time * sheet, panel, colorNum);
+          setPanelNo(panelCheck(panel, colorNum));
         }
         // パネル状況変わるたびに取れるパネルをチェック
         // watch(panelTotal, () => {
@@ -275,20 +307,26 @@ export const Home: FC = memo(() => {
         // メッセージ出力（入れないことを表示）
         setMessage('今は取れません');
       }
+      // console.log(`色番号${colorNum}`);
       // console.log(
-      //   `${panel[1][1].colorNo}${panel[1][2].colorNo}${panel[1][3].colorNo}${panel[1][4].colorNo}${panel[1][5].colorNo}`
+      //   // `${panel[1][1].colorNo}${panel[1][2].colorNo}${panel[1][3].colorNo}${panel[1][4].colorNo}${panel[1][5].colorNo}`
+      //   `開始${panel[1][1].condition}${panel[1][2].condition}${panel[1][3].condition}${panel[1][4].condition}${panel[1][5].condition}`
       // );
       // console.log(
-      //   `${panel[2][1].colorNo}${panel[2][2].colorNo}${panel[2][3].colorNo}${panel[2][4].colorNo}${panel[2][5].colorNo}`
+      //   // `${panel[2][1].colorNo}${panel[2][2].colorNo}${panel[2][3].colorNo}${panel[2][4].colorNo}${panel[2][5].colorNo}`
+      //   `　　${panel[2][1].condition}${panel[2][2].condition}${panel[2][3].condition}${panel[2][4].condition}${panel[2][5].condition}`
       // );
       // console.log(
-      //   `${panel[3][1].colorNo}${panel[3][2].colorNo}${panel[3][3].colorNo}${panel[3][4].colorNo}${panel[3][5].colorNo}`
+      //   // `${panel[3][1].colorNo}${panel[3][2].colorNo}${panel[3][3].colorNo}${panel[3][4].colorNo}${panel[3][5].colorNo}`
+      //   `　　${panel[3][1].condition}${panel[3][2].condition}${panel[3][3].condition}${panel[3][4].condition}${panel[3][5].condition}`
       // );
       // console.log(
-      //   `${panel[4][1].colorNo}${panel[4][2].colorNo}${panel[4][3].colorNo}${panel[4][4].colorNo}${panel[4][5].colorNo}`
+      //   // `${panel[4][1].colorNo}${panel[4][2].colorNo}${panel[4][3].colorNo}${panel[4][4].colorNo}${panel[4][5].colorNo}`
+      //   `　　${panel[4][1].condition}${panel[4][2].condition}${panel[4][3].condition}${panel[4][4].condition}${panel[4][5].condition}`
       // );
       // console.log(
-      //   `${panel[5][1].colorNo}${panel[5][2].colorNo}${panel[5][3].colorNo}${panel[5][4].colorNo}${panel[5][5].colorNo}`
+      //   // `${panel[5][1].colorNo}${panel[5][2].colorNo}${panel[5][3].colorNo}${panel[5][4].colorNo}${panel[5][5].colorNo}`
+      //   `　　${panel[5][1].condition}${panel[5][2].condition}${panel[5][3].condition}${panel[5][4].condition}${panel[5][5].condition}`
       // );
     }
   };

@@ -203,4 +203,5 @@ export const panelChangeExec = (col: number, v: number, s: number, pan: Panel[][
 //   // 枚数を追加
 //   sheets++
 //   window.setTimeout(panelChangeExec, time * sheets, col, v, s, pan, total)
+//   console.log('通過')
 // }
