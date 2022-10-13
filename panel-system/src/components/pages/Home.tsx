@@ -103,8 +103,6 @@ export const Home: FC = memo(() => {
         let panelChange = false;
         // 色判定（0:灰色、1:黄色は除外）
         if (currentColorNo >= COLORS.RED) {
-          // 挟まる枚数
-          let sheet = 0;
           // パネル更新（各方向で確認）
           // 1.変わるパネルがあるか判定し、あるならpanelChangeをtrueにする
           // 2.panelChangeがtrueならパネル更新する
@@ -117,14 +115,7 @@ export const Home: FC = memo(() => {
             sideNo
           );
           if (panelChange) {
-            sheet = upPanelChenge(
-              currentColorNo,
-              verNo,
-              sideNo,
-              panel,
-              panelTotal,
-              sheet
-            );
+            upPanelChenge(currentColorNo, verNo, sideNo, panel, panelTotal);
             panelChange = false;
           }
           // 下方向確認
@@ -136,14 +127,7 @@ export const Home: FC = memo(() => {
             sideNo
           );
           if (panelChange) {
-            sheet = downPanelChenge(
-              currentColorNo,
-              verNo,
-              sideNo,
-              panel,
-              panelTotal,
-              sheet
-            );
+            downPanelChenge(currentColorNo, verNo, sideNo, panel, panelTotal);
             panelChange = false;
           }
           // 左方向確認
@@ -155,14 +139,7 @@ export const Home: FC = memo(() => {
             sideNo
           );
           if (panelChange) {
-            sheet = leftPanelChenge(
-              currentColorNo,
-              verNo,
-              sideNo,
-              panel,
-              panelTotal,
-              sheet
-            );
+            leftPanelChenge(currentColorNo, verNo, sideNo, panel, panelTotal);
             panelChange = false;
           }
           // 右方向確認
@@ -174,14 +151,7 @@ export const Home: FC = memo(() => {
             sideNo
           );
           if (panelChange) {
-            sheet = rightPanelChenge(
-              currentColorNo,
-              verNo,
-              sideNo,
-              panel,
-              panelTotal,
-              sheet
-            );
+            rightPanelChenge(currentColorNo, verNo, sideNo, panel, panelTotal);
             panelChange = false;
           }
           // 左斜め上方向確認
@@ -193,14 +163,7 @@ export const Home: FC = memo(() => {
             sideNo
           );
           if (panelChange) {
-            sheet = leftUpPanelChenge(
-              currentColorNo,
-              verNo,
-              sideNo,
-              panel,
-              panelTotal,
-              sheet
-            );
+            leftUpPanelChenge(currentColorNo, verNo, sideNo, panel, panelTotal);
             panelChange = false;
           }
           // 左斜め下方向確認
@@ -212,13 +175,12 @@ export const Home: FC = memo(() => {
             sideNo
           );
           if (panelChange) {
-            sheet = leftDownPanelChenge(
+            leftDownPanelChenge(
               currentColorNo,
               verNo,
               sideNo,
               panel,
-              panelTotal,
-              sheet
+              panelTotal
             );
             panelChange = false;
           }
@@ -231,13 +193,12 @@ export const Home: FC = memo(() => {
             sideNo
           );
           if (panelChange) {
-            sheet = rightUpPanelChenge(
+            rightUpPanelChenge(
               currentColorNo,
               verNo,
               sideNo,
               panel,
-              panelTotal,
-              sheet
+              panelTotal
             );
             panelChange = false;
           }
@@ -255,8 +216,7 @@ export const Home: FC = memo(() => {
               verNo,
               sideNo,
               panel,
-              panelTotal,
-              sheet
+              panelTotal
             );
             panelChange = false;
           }
