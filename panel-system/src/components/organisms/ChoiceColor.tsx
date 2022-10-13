@@ -47,7 +47,6 @@ export const ChoiceColor: FC<Props> = memo((props) => {
 });
 
 const Play = styled.div`
-  /* 横に並べ、中央揃えにする */
   display: flex;
   justify-content: center;
 `;

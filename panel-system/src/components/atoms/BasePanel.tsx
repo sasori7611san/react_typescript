@@ -7,8 +7,6 @@ type Props = {
   panelNum: number;
   action: () => void;
 };
-// css用文字列
-let bgColor = 'gray';
 
 export const BasePanel: FC<Props> = memo((props) => {
   // context呼び出し
@@ -91,55 +89,48 @@ export const BasePanel: FC<Props> = memo((props) => {
 const Panels = styled.button`
   width: 60px;
   height: 60px;
-  // width: 160px;
-  // height: 90px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
+  text-align: center;
   background-color: gray;
-  // background-color: ${bgColor};
 `;
 const YellowPanels = styled.button`
   width: 60px;
   height: 60px;
-  // width: 160px;
-  // height: 90px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
+  text-align: center;
   background-color: Yellow;
 `;
 const RedPanels = styled.button`
   width: 60px;
   height: 60px;
-  // width: 160px;
-  // height: 90px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
+  text-align: center;
   background-color: red;
 `;
 const GreenPanels = styled.button`
   width: 60px;
   height: 60px;
-  // width: 160px;
-  // height: 90px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
+  text-align: center;
   background-color: green;
 `;
 const WhitePanels = styled.button`
   width: 60px;
   height: 60px;
-  // width: 160px;
-  // height: 90px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
+  text-align: center;
   background-color: white;
 `;
 const BluePanels = styled.button`
   width: 60px;
   height: 60px;
-  // width: 160px;
-  // height: 90px;
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
+  text-align: center;
   background-color: blue;
 `;
