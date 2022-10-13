@@ -1,10 +1,12 @@
 import { FC, memo, useContext } from 'react';
 import styled from 'styled-components';
 import { SheetsContext } from '../pages/Home';
+
 type Props = {
   strColor: string;
   onClick: () => void;
 };
+
 export const BaseButton: FC<Props> = memo((props) => {
   // パネル枚数
   const sheets = useContext(SheetsContext);
@@ -23,6 +25,7 @@ export const BaseButton: FC<Props> = memo((props) => {
       return <BaseGray onClick={props.onClick} />;
   }
 });
+
 const BaseRed = styled.button`
   margin: 5px;
   width: 50px;

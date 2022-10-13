@@ -74,6 +74,7 @@ let panel: Panel[][] = [
 type Props = {
   children: ReactNode;
 };
+
 export const PanelProvider: FC<Props> = (props) => {
   return (
     <PanelContext.Provider value={panel}>
