@@ -231,7 +231,6 @@ export const Home: FC = memo(() => {
       }
     }
   };
-
   return (
     <div>
       <PanelScreen action={(num: number) => action(num)} />

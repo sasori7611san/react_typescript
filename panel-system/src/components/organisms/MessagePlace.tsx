@@ -5,6 +5,7 @@ export type Props = {
   strColor: string;
   panelNo: string;
 };
+
 export const MessagePlace: FC<Props> = memo((props: Props) => {
   const { message, strColor, panelNo } = props;
   return (
