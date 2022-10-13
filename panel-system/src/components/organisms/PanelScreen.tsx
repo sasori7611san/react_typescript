@@ -170,8 +170,6 @@ export const PanelScreen: FC<Props> = memo((props) => {
 const Panels = styled.div`
   display: grid;
   grid-template-columns: 60px 60px 60px 60px 60px;
-  // grid-template-columns: 160px 160px 160px 160px 160px;
   gap: 0px;
   justify-content: center;
-  // background-color: gray;
 `;
