@@ -31,38 +31,60 @@ const BaseRed = styled.button`
   width: 50px;
   height: 50px;
   font-size: 16px;
+  color: black;
   background: red;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
 `;
 const BaseGreen = styled.button`
   margin: 5px;
   width: 50px;
   height: 50px;
   font-size: 16px;
+  color: black;
   background: green;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
 `;
 const BaseWhite = styled.button`
   margin: 5px;
   width: 50px;
   height: 50px;
   font-size: 16px;
+  color: black;
   background: white;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
 `;
 const BaseBlue = styled.button`
   margin: 5px;
   width: 50px;
   height: 50px;
   font-size: 16px;
+  color: black;
   background: blue;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
 `;
 const BaseYellow = styled.button`
   margin: 5px;
   width: 50px;
   height: 50px;
   background: yellow;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
 `;
 const BaseGray = styled.button`
   margin: 5px;
   width: 50px;
   height: 50px;
   background: gray;
+  border-style: solid;
+  border-width: 1px;
+  border-color: black;
 `;
