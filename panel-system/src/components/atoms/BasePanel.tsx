@@ -95,7 +95,7 @@ const Panels = styled.button`
   color: black;
   background-color: gray;
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-color: black;
 `;
 const YellowPanels = styled.button`
@@ -107,7 +107,7 @@ const YellowPanels = styled.button`
   color: black;
   background-color: Yellow;
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-color: black;
 `;
 const RedPanels = styled.button`
@@ -119,7 +119,7 @@ const RedPanels = styled.button`
   color: black;
   background-color: red;
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-color: black;
 `;
 const GreenPanels = styled.button`
@@ -131,7 +131,7 @@ const GreenPanels = styled.button`
   color: black;
   background-color: green;
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-color: black;
 `;
 const WhitePanels = styled.button`
@@ -143,7 +143,7 @@ const WhitePanels = styled.button`
   color: black;
   background-color: white;
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-color: black;
 `;
 const BluePanels = styled.button`
@@ -155,6 +155,6 @@ const BluePanels = styled.button`
   color: black;
   background-color: blue;
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-color: black;
 `;

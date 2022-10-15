@@ -34,7 +34,7 @@ const BaseRed = styled.button`
   color: black;
   background: red;
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-color: black;
 `;
 const BaseGreen = styled.button`
@@ -45,7 +45,7 @@ const BaseGreen = styled.button`
   color: black;
   background: green;
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-color: black;
 `;
 const BaseWhite = styled.button`
@@ -56,7 +56,7 @@ const BaseWhite = styled.button`
   color: black;
   background: white;
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-color: black;
 `;
 const BaseBlue = styled.button`
@@ -67,7 +67,7 @@ const BaseBlue = styled.button`
   color: black;
   background: blue;
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-color: black;
 `;
 const BaseYellow = styled.button`
@@ -76,7 +76,7 @@ const BaseYellow = styled.button`
   height: 50px;
   background: yellow;
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-color: black;
 `;
 const BaseGray = styled.button`
@@ -85,6 +85,6 @@ const BaseGray = styled.button`
   height: 50px;
   background: gray;
   border-style: solid;
-  border-width: 1px;
+  border-width: 2px;
   border-color: black;
 `;
