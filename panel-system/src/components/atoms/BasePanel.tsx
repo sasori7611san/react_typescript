@@ -92,7 +92,10 @@ const Panels = styled.button`
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
   text-align: center;
+  color: black;
   background-color: gray;
+  border-style: solid;
+  border-width: 1px;
 `;
 const YellowPanels = styled.button`
   width: 60px;
@@ -100,7 +103,10 @@ const YellowPanels = styled.button`
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
   text-align: center;
+  color: black;
   background-color: Yellow;
+  border-style: solid;
+  border-width: 1px;
 `;
 const RedPanels = styled.button`
   width: 60px;
@@ -108,7 +114,10 @@ const RedPanels = styled.button`
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
   text-align: center;
+  color: black;
   background-color: red;
+  border-style: solid;
+  border-width: 1px;
 `;
 const GreenPanels = styled.button`
   width: 60px;
@@ -116,7 +125,10 @@ const GreenPanels = styled.button`
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
   text-align: center;
+  color: black;
   background-color: green;
+  border-style: solid;
+  border-width: 1px;
 `;
 const WhitePanels = styled.button`
   width: 60px;
@@ -124,7 +136,10 @@ const WhitePanels = styled.button`
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
   text-align: center;
+  color: black;
   background-color: white;
+  border-style: solid;
+  border-width: 1px;
 `;
 const BluePanels = styled.button`
   width: 60px;
@@ -132,5 +147,8 @@ const BluePanels = styled.button`
   font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
   font-size: 16px;
   text-align: center;
+  color: black;
   background-color: blue;
+  border-style: solid;
+  border-width: 1px;
 `;
