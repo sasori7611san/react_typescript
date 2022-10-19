@@ -1,11 +1,12 @@
 // useRefを利用できるようにする
-import { MutableRefObject, RefObject, useRef } from 'react';
+import { useRef } from 'react';
 // useTodo()カスタムフックをimport
 import { useTodo } from '../hooks/useTodo';
 import { TodoAdd } from './TodoAdd';
 import { TodoList } from './TodoList';
 import { TodoTitle } from './TodoTitle';
-import { todo } from '../types/todo';
+import { Container } from '@chakra-ui/react';
+import { AddIcon } from '@chakra-ui/icons';
 
 function App() {
   // useTodo()カスタムフックで作成したtodoList, addTodoListItem, toggleTodoListItemStatus, deleteTodoListItemを利用する
@@ -33,17 +34,11 @@ function App() {
     // 追加したら、テキストエリアをからの文字列にする
     // 新規TODOを追加するaddTodoListItem関数を
     // 「+ TODOを追加」ボタンをクリックで実行
-    // addTodoListItem(inputEl.current.value);
-    // inputEl.current.value = '';
     if (inputEl.current !== undefined) {
       addTodoListItem(inputEl.current.value);
     }
-    // inputEl.current.value = '';
     inputEl.current.value = '';
   };
-
-  // console.logでコンソールに取得したTODOリストの情報を表示してみる
-  console.log('TODOリスト:', todoList);
 
   // filter()を利用して「TODOの状態が未完了」の要素を持つ新しい配列を作成
   const inCompletedList = todoList.filter((todo) => {
@@ -56,16 +51,32 @@ function App() {
   });
 
   return (
-    <>
+    // Containerコンポーネントはデフォルトでdivタグとして書き出される
+    // centerContentでcenter寄せのレイアウトになる
+    // モバイル表示でpaddingは4 = 1rem =16px;
+    // 最初のbreakpoint "md": = "48em" (=768px)を境界として
+    // PC表示でpaddingは6 = 1.5rem = 24px;
+    // max-widthは3xl = 48rem = 768px
+    <Container centerContent p={{ base: '4', md: '6' }} maxWidth="3xl">
       {/* h1見出しタグをTodoTitleコンポーネントに */}
       {/* 見出しに表示させたいテキストをtitleに代入してコンポーネントへpropsで渡す */}
-      <TodoTitle title="TODO進捗管理" as="h1" />
+      {/* モバイル表示でfont-sizeは2xl = 1.5rem =24px、最初のBreakpoint "md": = "48em" (=768px)を境界として */}
+      {/* PC表示でfont-sizeは3xl = 1.875rem = 30px */}
+      <TodoTitle
+        title="TODO進捗管理"
+        as="h1"
+        fontSize={{ base: '2xl', md: '3xl' }}
+        mt="8"
+      />
       {/* TODO追加フォームTodoAddコンポーネントを作成 */}
       {/* useTodo()カスタムフックで作成したhandleAddTodoListItem関数を子コンポーネントへpropsで渡す */}
       {/* useTodo()カスタムフックで作成したinputEl関数を子コンポーネントへpropsで渡す */}
       {/* 「+ TODOを追加」ボタンをクリックでhandleAddTodoListItem関数を実行 */}
+      {/* ボタン左側に表示させたいiconをpropsで子コンポーネントへ渡す */}
       <TodoAdd
-        buttonText="+ TODOを追加"
+        placeholder="ADD TODO"
+        leftIcon={<AddIcon />}
+        buttonText="TODOを追加"
         inputEl={inputEl}
         handleAddTodoListItem={handleAddTodoListItem}
       />
@@ -79,12 +90,15 @@ function App() {
       {/* h2見出しタグをTodoTitleコンポーネントに */}
       {/* 見出しに表示させたいテキストをtitleに代入して子コンポーネントへpropsで渡す */}
       {/* h2をasに代入してコンポーネントへpropsで渡す */}
+      {/* モバイル表示でfont-sizeはxl = 1.25rem =20px、最初のBreakpoint "md": = "48em" (=768px)を境界として */}
+      {/* PC表示でfont-sizeは2xl = 1.5rem = 24px fontsizeをTodoTitleコンポーネントに渡している */}
       <TodoList
         todoList={inCompletedList}
         toggleTodoListItemStatus={toggleTodoListItemStatus}
         deleteTodoListItem={deleteTodoListItem}
         title="未完了TODOリスト"
         as="h2"
+        fontSize={{ base: 'xl', md: '2xl' }}
       />
       {/* <TodoTitle title="完了TODOリスト" as="h2" /> */}
       {/* TodoListコンポーネント */}
@@ -96,14 +110,17 @@ function App() {
       {/* h2見出しタグをTodoTitleコンポーネントに */}
       {/* 見出しに表示させたいテキストをtitleに代入して子コンポーネントへpropsで渡す */}
       {/* h2をasに代入してコンポーネントへpropsで渡す */}
+      {/* モバイル表示でfont-sizeはxl = 1.25rem =20px、最初のBreakpoint "md": = "48em" (=768px)を境界として */}
+      {/* PC表示でfont-sizeは2xl = 1.5rem = 24px fontsizeをTodoTitleコンポーネントに渡している */}
       <TodoList
         todoList={completedList}
         toggleTodoListItemStatus={toggleTodoListItemStatus}
         deleteTodoListItem={deleteTodoListItem}
         title="完了TODOリスト"
         as="h2"
+        fontSize={{ base: 'xl', md: '2xl' }}
       />
-    </>
+    </Container>
   );
 }
 
