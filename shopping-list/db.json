@@ -2,7 +2,7 @@
   "todos": [
     {
       "id": 1,
-      "content": "Create React app をインストールする",
+      "content": "Create React appをインストールする",
       "done": true
     },
     {
@@ -13,7 +13,7 @@
     {
       "id": 3,
       "content": "Chakra UIをインストールする",
-      "done": false      
+      "done": false
     }
   ]
 }
