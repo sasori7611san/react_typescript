@@ -42,7 +42,7 @@ export const deleteTodoData = async (id: string) => {
 // axios.put()で一致したidのTODOを更新する
 // TODOを更新するupdateTodoData関数を宣言
 // 他ファイルでupdateTodoData()を利用できるようにする為exportしておく
-export const updateTodoData = async (id: number, todo: todo) => {
+export const updateTodoData = async (id: string, todo: todo) => {
   // 第2引数に、更新したいデータを渡す
   const response = await axios.put(`${todoDataUrl}/${id}`, todo);
 

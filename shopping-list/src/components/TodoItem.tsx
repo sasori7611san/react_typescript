@@ -18,7 +18,7 @@ export const TodoItem: FC<Props> = (props) => {
   // TODOを削除するdeleteTodoListItem関数を実行させる
   // handleDeleteTodoListItem関数を宣言
   const handleDeleteTodoListItem = () => deleteTodoListItem(todo.id);
-  const label = todo.done ? '未完了リストへ' : '完了リストへ';
+  const label = todo.done ? '買うものリストへ' : '購入済みリストへ';
   const setColorScheme = todo.done ? 'pink' : 'blue';
 
   return (
@@ -66,9 +66,7 @@ export const TodoItem: FC<Props> = (props) => {
           variant="unstyled"
           aria-label="delete"
           onClick={handleDeleteTodoListItem}
-        >
-          削除
-        </IconButton>
+        />
       </Flex>
     </ListItem>
   );

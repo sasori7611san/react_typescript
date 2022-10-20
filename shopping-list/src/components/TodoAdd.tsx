@@ -3,7 +3,6 @@ import { Textarea, Button } from '@chakra-ui/react';
 
 type Props = {
   placeholder: string;
-  // leftIcon: _chakra_ui_system.componentWithAs<'svg', _chakra_ui_icon.IconProps>;
   leftIcon: JSX.Element;
   buttonText: string;
   inputEl: LegacyRef<HTMLTextAreaElement>;

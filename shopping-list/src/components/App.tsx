@@ -1,6 +1,4 @@
-// useRefを利用できるようにする
 import { useRef } from 'react';
-// useTodo()カスタムフックをimport
 import { useTodo } from '../hooks/useTodo';
 import { TodoAdd } from './TodoAdd';
 import { TodoList } from './TodoList';
@@ -63,7 +61,7 @@ function App() {
       {/* モバイル表示でfont-sizeは2xl = 1.5rem =24px、最初のBreakpoint "md": = "48em" (=768px)を境界として */}
       {/* PC表示でfont-sizeは3xl = 1.875rem = 30px */}
       <TodoTitle
-        title="TODO進捗管理"
+        title="買い物リスト"
         as="h1"
         fontSize={{ base: '2xl', md: '3xl' }}
         mt="8"
@@ -76,7 +74,7 @@ function App() {
       <TodoAdd
         placeholder="ADD TODO"
         leftIcon={<AddIcon />}
-        buttonText="TODOを追加"
+        buttonText="買うものを追加"
         inputEl={inputEl}
         handleAddTodoListItem={handleAddTodoListItem}
       />
@@ -96,7 +94,7 @@ function App() {
         todoList={inCompletedList}
         toggleTodoListItemStatus={toggleTodoListItemStatus}
         deleteTodoListItem={deleteTodoListItem}
-        title="未完了TODOリスト"
+        title="買うものリスト"
         as="h2"
         fontSize={{ base: 'xl', md: '2xl' }}
       />
@@ -116,7 +114,7 @@ function App() {
         todoList={completedList}
         toggleTodoListItemStatus={toggleTodoListItemStatus}
         deleteTodoListItem={deleteTodoListItem}
-        title="完了TODOリスト"
+        title="購入済みリスト"
         as="h2"
         fontSize={{ base: 'xl', md: '2xl' }}
       />
