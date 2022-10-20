@@ -15,9 +15,6 @@ export const TodoAdd: FC<Props> = (props) => {
   return (
     <>
       {/* useRef()で作成したrefオブジェクトであるinputElをref属性に指定してDOMを参照する */}
-      {/* bgColorはbackground-colorのStyle Propsショートハンド */}
-      {/* mtはmargin-topのStyle Propsショートハンド。margin-topは8 = 2rem =32px */}
-      {/* borderColorはborder-colorのStyle Props */}
       <Textarea
         placeholder={placeholder}
         bgColor="white"
@@ -25,9 +22,8 @@ export const TodoAdd: FC<Props> = (props) => {
         borderColor="gray.400"
         ref={inputEl}
       />
-      {/* 入力フォームにテキストを入力し、「+ TODOを追加」ボタンをクリックで新規TODOを追加 */}
+      {/* 入力フォームにテキストを入力し、「+ 買うものを追加」ボタンをクリックで新たに買うものを追加 */}
       {/* Buttonの色はcolorSchemeで設定できる */}
-      {/* mtはmargin-topのStyle Propsショートハンド。margin-topは8 = 2rem =32px */}
       <Button
         onClick={handleAddTodoListItem}
         colorScheme="blue"

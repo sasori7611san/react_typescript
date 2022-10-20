@@ -10,19 +10,18 @@ import { todo } from '../types/todo';
 
 // useTodo()カスタムフックを外部ファイルで利用できるようにする為exportしておく
 export const useTodo = () => {
-  // todoListは現在のTODOの状態
+  // todoListは現在の買うものの状態
   // setTodoListは現在のtodoListの状態を更新するための関数
   // todoListの初期値に空の配列をセット
-  // const [todoList, setTodoList] = useState([]);
   const [todoList, setTodoList] = useState<todo[]>([]);
 
   useEffect(() => {
     // useEffect()を利用することによりコンポーネントのマウント後
     // またはアンマウント後に処理を実行する
-    // モックサーバーからTODOデータを取得するgetAllTodosData()を実行
+    // モックサーバーから買うものデータを取得するgetAllTodosData()を実行
     todoData.getAllTodosData().then((todo) => {
-      // モックサーバーからTODOデータを取得後、取得したTODOデータを反転
-      // させておくことで、TODOを追加した順に上から表示させることができる
+      // モックサーバーから買うものデータを取得後、取得した買うものデータを反転
+      // させておくことで、買うものを追加した順に上から表示させることができる
       // Array.reverse()と、スプレッド構文[ES2015]をくみあわせて
       // 並び替えを行うことで、もとの配列要素の並び順に影響することなく
       // 新しい配列を作成できる
@@ -60,28 +59,28 @@ export const useTodo = () => {
     }
   };
 
-  // 新規TODOを追加するaddTodoListItem関数を宣言
+  // 新たに買うものを追加するaddTodoListItem関数を宣言
   const addTodoListItem = (todoContent: string) => {
     const newTodoItem = {
       // idにulidで生成された一意な値をセット
       id: ulid(),
 
-      // contentは追加するTODOの内容
+      // contentは追加する買うものの内容
       content: todoContent,
 
-      // 追加されたTODOはデフォルトで未完了状態にセット
+      // 追加された買うものはデフォルトで未完了状態にセット
       done: false,
     };
 
-    // addTodoData()を利用してTODOを更新したら、
+    // addTodoData()を利用して買うものを更新したら、
     // 続いてtodoListの状態も更新
-    // addTodoData()は新規TODOを追加する関数
+    // addTodoData()は新たに買うものを追加する関数
     return todoData.addTodoData(newTodoItem).then((addTodo) => {
       // todoListの状態(state)をnewTodoItemが追加された状態に更新
       setTodoList([addTodo, ...todoList]);
     });
   };
-  // TODOを削除するdeleteTodoListItem関数を宣言
+  // 買うものを削除するdeleteTodoListItem関数を宣言
   const deleteTodoListItem = (id: string) => {
     // todoDataを更新したらtodoListの状態も更新
     // deleteTodoData()を利用して指定されたidのTODOを削除したら、

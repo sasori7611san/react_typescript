@@ -11,7 +11,7 @@ type Props = {
 
 export const TodoItem: FC<Props> = (props) => {
   const { todo, toggleTodoListItemStatus, deleteTodoListItem } = props;
-  // TODOの状態(完了/未完了)を反転させるtoggleTodoListItemStatus関数を実行させる
+  // 買うもの状態(完了/未完了)を反転させるtoggleTodoListItemStatus関数を実行させる
   // 実行させるhandleToggleTodoListItemStatus関数を宣言
   const handleToggleTodoListItemStatus = () =>
     toggleTodoListItemStatus(todo.id, todo.done);
@@ -23,11 +23,6 @@ export const TodoItem: FC<Props> = (props) => {
 
   return (
     // ListItemコンポーネントは、liタグで利用できるスタイルを利用できる
-    // paddingは4 = 1rem = 16px
-    // margin-topは4 = 1rem = 16px
-    // background: white
-    // border-radiusはmd = 0.375rem = 6px
-    // background-colorはデフォルトテーマのcolorで、gray.300
     <ListItem
       borderWidth="1px"
       p="4"
@@ -36,19 +31,15 @@ export const TodoItem: FC<Props> = (props) => {
       borderRadius="md"
       backgroundColor="gray.300"
     >
-      {/* TODOの内容 */}
+      {/* 買うもの内容 */}
       {/* Chakra UIのTextコンポーネントはデフォルトでは<p>タグを出力する */}
-      {/* margin-bottomは6 = 1.5rem = 24px */}
       <Text mb="6">{todo.content}</Text>
       {/* Chakra UIのFlexでflaxレイアウト */}
       <Flex align="center" justify="flex-end">
         {/* ボタンクリックで handleToggleTodoListItemStatus関数を実行*/}
-        {/* ボタンクリックでTODOの状態(完了/未完了)が反転 */}
+        {/* ボタンクリックで買うもの状態(完了/未完了)が反転 */}
         {/* Buttonの色はcolorSchemeで設定できる */}
         {/* 完了ならpink未完了ならblue */}
-        {/* variant(ボタンのスタイル)には"link","outline","solid","ghost","unstyled"がある */}
-        {/* デフォルトは"solid" */}
-        {/* Buttonのsizeには、"xs","sm","md","lg"がある */}
         <Button
           colorScheme={setColorScheme}
           variant="outline"
@@ -58,9 +49,8 @@ export const TodoItem: FC<Props> = (props) => {
           {label}
         </Button>
         {/* ボタンクリックで handleDeleteTodoListItem関数を実行*/}
-        {/* ボタンクリックでTODOの状態(完了/未完了)が反転 */}
+        {/* ボタンクリックで買うもの状態(完了/未完了)が反転 */}
         {/* Chakra iconのDeleteIcon */}
-        {/* variant(ボタンのスタイル)には"link","outline","solid","ghost","unstyled"がある */}
         <IconButton
           icon={<DeleteIcon />}
           variant="unstyled"

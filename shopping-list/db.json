@@ -1,28 +1,18 @@
 {
   "todos": [
     {
-      "id": 1,
-      "content": "Create React appをインストールする",
+      "id": "01GFT3Y0KFC2PKPTF1FTBNRNQA",
+      "content": "卵",
       "done": true
     },
     {
-      "id": 2,
-      "content": "JSON Server仮のAPIを作成する",
+      "id": "01GFT3YR1M0V2VA5HM8VNP1K3Q",
+      "content": "ほうれん草",
       "done": false
     },
     {
-      "id": 3,
-      "content": "Chakra UIをインストールする",
-      "done": false
-    },
-    {
-      "content": "野菜",
-      "id": "01GFSXKN1DPB55AH4QRECWQA68",
-      "done": false
-    },
-    {
-      "id": "01GFT1K36450EGTJ8CZBY0WTQ6",
-      "content": "肉",
+      "id": "01GFT402DWSK5Z3WAFZ20ABZ24",
+      "content": "国産豚肉",
       "done": false
     }
   ]
