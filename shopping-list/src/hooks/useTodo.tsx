@@ -46,7 +46,7 @@ export const useTodo = () => {
 
       // updateTodoData()を利用して指定されたidのTODOを更新したら、
       // 続いてtodoListの状態も更新する
-      todoData.updateTodoData(parseInt(id), newTodoItem).then((updatedTodo) => {
+      todoData.updateTodoData(id, newTodoItem).then((updatedTodo) => {
         const newTodoList = todoList.map((item) =>
           // idが異なる場合、todoListから取り出したitemをそのまま返し、
           // 同じ場合はdone(完了/未完了)の状態を反転させたupdatedtodoを
@@ -63,17 +63,17 @@ export const useTodo = () => {
   // 新規TODOを追加するaddTodoListItem関数を宣言
   const addTodoListItem = (todoContent: string) => {
     const newTodoItem = {
-      // contentは追加するTODOの内容
-      content: todoContent,
-
       // idにulidで生成された一意な値をセット
       id: ulid(),
+
+      // contentは追加するTODOの内容
+      content: todoContent,
 
       // 追加されたTODOはデフォルトで未完了状態にセット
       done: false,
     };
 
-    // addTodoData()をりようしてTODOを更新したら、
+    // addTodoData()を利用してTODOを更新したら、
     // 続いてtodoListの状態も更新
     // addTodoData()は新規TODOを追加する関数
     return todoData.addTodoData(newTodoItem).then((addTodo) => {
