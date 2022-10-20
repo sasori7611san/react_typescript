@@ -28,13 +28,9 @@ export const TodoList: FC<Props> = (props) => {
       {/* todoListの配列の中身がからの場合は、見出しとTODOリストの両方を表示させない */}
       {TodoTitle.length !== 0 && (
         <>
-          {/* mtはmargin-topのStyle Props ショートハンド */}
-          {/* margin-topは12 = 3rem = 48px */}
           <TodoTitle title={title} as={as} fontSize={fontSize} mt="12" />
           {/* Listコンポーネントは、ListItemを表示するために使用される */}
           {/* Listコンポーネントは、デフォルトでは<ul>タグを出力する */}
-          {/* wはwidthのStyle Propsショートハンド */}
-          {/* widthはfull = 100% */}
           <List w="full">
             {/* map()を利用してtodoListの要素を1つひとつ取り出す */}
             {todoList.map((todo) => (

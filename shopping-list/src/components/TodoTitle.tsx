@@ -13,7 +13,6 @@ export const TodoTitle: FC<Props> = memo((props) => {
   const { title, as, fontSize, mt } = props;
   // Headingコンポーネントでは、すべてのStyle Propsを利用できる
   // Headingコンポーネントは、デフォルトでは<h2>タグを出力する
-  // wはwidthのStyle Propsショートハンド
   return (
     <Heading mt={mt} as={as} fontSize={fontSize} w="full">
       {title}
