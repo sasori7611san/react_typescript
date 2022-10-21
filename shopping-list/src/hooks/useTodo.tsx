@@ -83,18 +83,18 @@ export const useTodo = () => {
   // 買うものを削除するdeleteTodoListItem関数を宣言
   const deleteTodoListItem = (id: string) => {
     // todoDataを更新したらtodoListの状態も更新
-    // deleteTodoData()を利用して指定されたidのTODOを削除したら、
+    // deleteTodoData()を利用して指定されたidの買うものを削除したら、
     // 続いてtodoListの状態も更新する
     // deleteTodoData()は一致したidのTODOを削除する関数
     todoData.deleteTodoData(id).then((deleteListItemId) => {
       const newTodoList = todoList.filter(
-        // 削除したTODOとidが一致しないTODOをフィルタリングして
+        // 削除した買うものとidが一致しない買うものをフィルタリングして
         // 新しい配列を返す
-        // idが一致したTODOは除外される
+        // idが一致した買うものは除外される
         (item) => item.id !== deleteListItemId
       );
       // todoListの状態(state)を更新
-      // todoListの状態(state)を指定されたidのTODOが削除された状態に更新
+      // todoListの状態(state)を指定されたidの買うものが削除された状態に更新
       setTodoList(newTodoList);
     });
   };

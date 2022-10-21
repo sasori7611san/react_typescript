@@ -13,6 +13,21 @@
     {
       "id": "01GFT402DWSK5Z3WAFZ20ABZ24",
       "content": "国産豚肉",
+      "done": true
+    },
+    {
+      "id": "01GFWR8BAG56JBK7Z1HE8DKEHS",
+      "content": "なす",
+      "done": false
+    },
+    {
+      "id": "01GFWR8S5NETVHYTBY5BDVDYGX",
+      "content": "焼き芋16個",
+      "done": false
+    },
+    {
+      "id": "01GFWSB61AG8N1ZA2TWBWNKY8B",
+      "content": "魚類\nいわし、あじ、さば\nあさり、いか、えび",
       "done": false
     }
   ]
