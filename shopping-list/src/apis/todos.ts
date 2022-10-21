@@ -18,7 +18,7 @@ export const getAllTodosData = async () => {
 };
 
 // axios.post()で新たに買うものを追加する
-// TODOを追加するaddTodoData関数を宣言
+// 買うものを追加するaddTodoData関数を宣言
 // 他ファイルでaddTodoData()を利用できるようにする為exportしておく
 export const addTodoData = async (todo: todo) => {
   // 第2引数に、送信したいデータを指定してPOST送信
@@ -29,13 +29,13 @@ export const addTodoData = async (todo: todo) => {
   return response.data;
 };
 
-// axios.delete()で一致したidのTODOを削除する
+// axios.delete()で一致したidの買うものを削除する
 // 買うものを削除するdeleteTodoData関数を宣言
 // 他ファイルでdeleteTodoData()を利用できるようにする為exportしておく
 export const deleteTodoData = async (id: string) => {
   await axios.delete(`${todoDataUrl}/${id}`);
 
-  // 通信後、削除したTODOのidを返す
+  // 通信後、削除した買うもののidを返す
   return id;
 };
 

@@ -8,7 +8,7 @@ import { AddIcon } from '@chakra-ui/icons';
 
 function App() {
   // useTodo()カスタムフックで作成したtodoList, addTodoListItem, toggleTodoListItemStatus, deleteTodoListItemを利用する
-  // todoListは現在のTODOの状態、addTodoListItemは新たに買うものを追加する関数、 toggleTodoListItemStatusはdone(完了/未完了)を反転させて更新する関数, deleteTodoListItemはTODOを削除する関数
+  // todoListは現在の買うものの状態、addTodoListItemは新たに買うものを追加する関数、 toggleTodoListItemStatusはdone(完了/未完了)を反転させて更新する関数, deleteTodoListItemはTODOを削除する関数
   const {
     todoList,
     addTodoListItem,
@@ -16,10 +16,10 @@ function App() {
     deleteTodoListItem,
   } = useTodo();
 
-  // useRefでrefオブジェクトを作成(TODO入力フォームで利用)
+  // useRefでrefオブジェクトを作成(買うもの入力フォームで利用)
   const inputEl = useRef<HTMLTextAreaElement>(null);
 
-  // TODO入力フォームで入力された文字列を新しいTODOに登録するための
+  // 買うもの入力フォームで入力された文字列を新しい買うものに登録するための
   // handleAddTodoListItem関数を宣言
   const handleAddTodoListItem = () => {
     // 何も入力されていない場合にクリックしても何も返さない
@@ -35,12 +35,12 @@ function App() {
     inputEl.current.value = '';
   };
 
-  // filter()を利用して「TODOの状態が未完了」の要素を持つ新しい配列を作成
+  // filter()を利用して「買うものが未完了」の要素を持つ新しい配列を作成
   const inCompletedList = todoList.filter((todo) => {
     return !todo.done;
   });
 
-  // filter()を利用して「TODOの状態が完了」の要素を持つ新しい配列を作成
+  // filter()を利用して「買うものが完了」の要素を持つ新しい配列を作成
   const completedList = todoList.filter((todo) => {
     return todo.done;
   });
@@ -57,13 +57,13 @@ function App() {
         fontSize={{ base: '2xl', md: '3xl' }}
         mt="8"
       />
-      {/* TODO追加フォームTodoAddコンポーネントを作成 */}
+      {/* 買うもの追加フォームTodoAddコンポーネントを作成 */}
       {/* useTodo()カスタムフックで作成したhandleAddTodoListItem関数を子コンポーネントへpropsで渡す */}
       {/* useTodo()カスタムフックで作成したinputEl関数を子コンポーネントへpropsで渡す */}
       {/* 「+ 買うものを追加」ボタンをクリックでhandleAddTodoListItem関数を実行 */}
       {/* ボタン左側に表示させたいiconをpropsで子コンポーネントへ渡す */}
       <TodoAdd
-        placeholder="ADD TODO"
+        placeholder="買うものを書く"
         leftIcon={<AddIcon />}
         buttonText="買うものを追加"
         inputEl={inputEl}
